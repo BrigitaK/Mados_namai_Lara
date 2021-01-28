@@ -80,5 +80,24 @@ class MasterController extends AbstractController
 
         return $this->redirectToRoute('master_index');
     }
+     /**
+     * @Route("/master/delete/{id}", name="master_delete", methods={"POST"})
+     */
+    public function delete($id): Response
+    {
+        $master = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->find($id);
+
+        // if ($master->getBooks()->count() > 0) {
+        //     return new Response('Šio autorius ištrinti negalima, nes turi knygų.');
+        // }
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($master);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('master_index');
+    }
 
 }
