@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create new Outfit!{% endblock %}
+
+{% block body %}
+    <h1>Create new Outfit! ✅</h1>
+
+    <form action="{{path('outfit_store')}}" method="POST">
+        Type:<input type="text" name="outfit_type">
+        Color:<input type="text" name="outfit_color">
+        Size:<input type="text" name="outfit_size">
+        About:<textarea name="outfit_about"></textarea>
+        <select name="outfit_master_id">
+        {% for master in masters %}
+        <option value="{{master.id}}">{{master.name}} {{master.surname}}</option>
+        {% endfor %}
+        </select>
+        <button type="submit">Add new Outfit</button>
+    </form>
+
+</div>
+{% endblock %}
