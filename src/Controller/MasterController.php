@@ -15,8 +15,12 @@ class MasterController extends AbstractController
      */
     public function index(): Response
     {
+        $masters = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->findAll();
+        
         return $this->render('master/index.html.twig', [
-            'controller_name' => 'MasterController',
+            'masters' => $masters,
         ]);
     }
     /**
