@@ -48,5 +48,18 @@ class MasterController extends AbstractController
 
         return $this->redirectToRoute('master_index');
     }
+    /**
+     * @Route("/master/edit/{id}", name="master_edit", methods={"GET"})
+     */
+    public function edit(int $id): Response
+    {
+        $master = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->find($id);
+
+        return $this->render('master/edit.html.twig', [
+            'master' => $master,
+        ]);
+    }
 
 }

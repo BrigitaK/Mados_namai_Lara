@@ -11,8 +11,8 @@
     {% for master in masters %}
         <li>
         {{master.name}} {{master.surname}}
-        {# <a href="{{ path('master_edit', {id: master.id}) }}">Edit</a>
-        <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
+        <a href="{{ path('master_edit', {id: master.id}) }}">Edit</a>
+        {# <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
         <button type="submit">DELETE</button>
         </form>
             {% for book in master.books %}
