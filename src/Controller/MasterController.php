@@ -61,5 +61,24 @@ class MasterController extends AbstractController
             'master' => $master,
         ]);
     }
+     /**
+     * @Route("/master/update/{id}", name="master_update", methods={"POST"})
+     */
+    public function update(Request $r, $id): Response
+    {
+        $master = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->find($id);
+
+        $master->
+        setName($r->request->get('master_name'))->
+        setSurname($r->request->get('master_surname'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($master);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('master_index');
+    }
 
 }
