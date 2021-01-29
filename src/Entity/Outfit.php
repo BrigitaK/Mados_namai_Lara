@@ -42,6 +42,11 @@ class Outfit
      */
     private $master_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Master::class, inversedBy="outfits")
+     */
+    private $master;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Outfit
     public function setMasterId(int $master_id): self
     {
         $this->master_id = $master_id;
+
+        return $this;
+    }
+
+    public function getMaster(): ?Master
+    {
+        return $this->master;
+    }
+
+    public function setMaster(?Master $master): self
+    {
+        $this->master = $master;
 
         return $this;
     }

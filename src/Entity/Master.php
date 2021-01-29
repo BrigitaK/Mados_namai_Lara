@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MasterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Master
      * @ORM\Column(type="string", length=64)
      */
     private $surname;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Outfit::class, mappedBy="master")
+     */
+    private $outfits;
+
+    public function __construct()
+    {
+        $this->outfits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,36 @@ class Master
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Outfit[]
+     */
+    public function getOutfits(): Collection
+    {
+        return $this->outfits;
+    }
+
+    public function addOutfit(Outfit $outfit): self
+    {
+        if (!$this->outfits->contains($outfit)) {
+            $this->outfits[] = $outfit;
+            $outfit->setMaster($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOutfit(Outfit $outfit): self
+    {
+        if ($this->outfits->removeElement($outfit)) {
+            // set the owning side to null (unless already changed)
+            if ($outfit->getMaster() === $this) {
+                $outfit->setMaster(null);
+            }
+        }
 
         return $this;
     }

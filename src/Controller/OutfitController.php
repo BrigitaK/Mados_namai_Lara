@@ -42,13 +42,17 @@ class OutfitController extends AbstractController
      */
     public function store(Request $r): Response
     {
+        $master = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->find($r->request->get('outfit_master_id'));
+
         $outfit = New Outfit;
         $outfit->
         setType($r->request->get('outfit_type'))->
         setColor($r->request->get('outfit_color'))->
         setSize($r->request->get('outfit_size'))->
         setAbout($r->request->get('outfit_about'))->
-        setMasterId($r->request->get('outfit_master_id'));
+        setMaster($master);
        
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($outfit);
@@ -83,16 +87,16 @@ class OutfitController extends AbstractController
         ->getRepository(Outfit::class)
         ->find($id);
 
-        // $master = $this->getDoctrine()
-        //  ->getRepository(Master::class)
-        //  ->find($r->request->get('outfit_master_id'));
+        $master = $this->getDoctrine()
+         ->getRepository(Master::class)
+         ->find($r->request->get('outfit_master_id'));
 
         $outfit
         ->setType($r->request->get('outfit_type'))
         ->setColor($r->request->get('outfit_color'))
         ->setSize($r->request->get('outfit_size'))
         ->setAbout($r->request->get('outfit_about'))
-        ->setMasterId($r->request->get('outfit_master_id'));
+        ->setMaster($master);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($outfit);
