@@ -16,8 +16,12 @@ class OutfitController extends AbstractController
      */
     public function index(): Response
     {
+        $outfits = $this->getDoctrine()
+        ->getRepository(Outfit::class)
+        ->findAll();
+        
         return $this->render('outfit/index.html.twig', [
-            'controller_name' => 'OutfitController',
+            'outfits' => $outfits,
         ]);
     }
     /**
@@ -52,4 +56,66 @@ class OutfitController extends AbstractController
 
         return $this->redirectToRoute('outfit_index');
     }
+    /**
+     * @Route("/outfit/edit/{id}", name="outfit_edit", methods={"GET"})
+     */
+    public function edit(int $id): Response
+    {
+        $outfit = $this->getDoctrine()
+        ->getRepository(Outfit::class)
+        ->find($id);
+
+        $masters = $this->getDoctrine()
+        ->getRepository(Master::class)
+        ->findAll();
+
+        return $this->render('outfit/edit.html.twig', [
+            'outfit' => $outfit,
+            'masters' => $masters
+        ]);
+    }
+       /**
+     * @Route("/outfit/update/{id}", name="outfit_update", methods={"POST"})
+     */
+    public function update(Request $r, $id): Response
+    {
+        $outfit = $this->getDoctrine()
+        ->getRepository(Outfit::class)
+        ->find($id);
+
+        // $master = $this->getDoctrine()
+        //  ->getRepository(Master::class)
+        //  ->find($r->request->get('outfit_master_id'));
+
+        $outfit
+        ->setType($r->request->get('outfit_type'))
+        ->setColor($r->request->get('outfit_color'))
+        ->setSize($r->request->get('outfit_size'))
+        ->setAbout($r->request->get('outfit_about'))
+        ->setMasterId($r->request->get('outfit_master_id'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($outfit);
+        $entityManager->flush();
+
+        //grazinu redirect
+        return $this->redirectToRoute('outfit_index');
+    }
+      /**
+     * @Route("/outfit/delete/{id}", name="outfit_delete", methods={"POST"})
+     */
+    public function delete($id): Response
+    {
+        $outfit = $this->getDoctrine()
+        ->getRepository(Outfit::class)
+        ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($outfit);
+        $entityManager->flush();
+
+        //grazinu redirect
+        return $this->redirectToRoute('outfit_index');
+    }
+
 }

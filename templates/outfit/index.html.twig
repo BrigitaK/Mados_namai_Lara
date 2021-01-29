@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OutfitController!{% endblock %}
+{% block title %}Outfits List!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Outfits in Library ✅</h1>
 
-    This friendly message is coming from:
+    List:
     <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/dashboard/Mados_namai_Lara/src/Controller/OutfitController.php'|file_link(0) }}">src/Controller/OutfitController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/dashboard/Mados_namai_Lara/templates/outfit/index.html.twig'|file_link(0) }}">templates/outfit/index.html.twig</a></code></li>
+    {% for outfit in outfits %}
+        <li>
+        {{outfit.type}}
+        <a href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit</a>
+        <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
+        <button type="submit">DELETE</button>
+        </form>
+            {# {% for book in outfit.books %}
+                {{book.title}}<br>
+            {% endfor %} #}
+        </li>
+    {% endfor %}
     </ul>
 </div>
 {% endblock %}
