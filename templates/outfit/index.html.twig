@@ -10,14 +10,11 @@
     <ul>
     {% for outfit in outfits %}
         <li>
-        {{outfit.type}}
+        {{outfit.type}} {{outfit.master.name}} {{outfit.master.surname}}
         <a href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit</a>
         <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
         <button type="submit">DELETE</button>
         </form>
-            {# {% for book in outfit.books %}
-                {{book.title}}<br>
-            {% endfor %} #}
         </li>
     {% endfor %}
     </ul>

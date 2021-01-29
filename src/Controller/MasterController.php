@@ -89,9 +89,9 @@ class MasterController extends AbstractController
         ->getRepository(Master::class)
         ->find($id);
 
-        // if ($master->getBooks()->count() > 0) {
-        //     return new Response('Šio autorius ištrinti negalima, nes turi knygų.');
-        // }
+        if ($master->getOutfits()->count() > 0) {
+            return new Response('Šio kūrėjo ištrinti negalima, nes turi gaminių.');
+        }
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($master);

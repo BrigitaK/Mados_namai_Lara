@@ -15,9 +15,9 @@
         <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
         <button type="submit">DELETE</button>
         </form>
-            {# {% for book in master.books %}
-                {{book.title}}<br>
-            {% endfor %} #}
+            {% for outfit in master.outfits %}
+                {{outfit.type}}<br>
+            {% endfor %}
         </li>
     {% endfor %}
     </ul>
