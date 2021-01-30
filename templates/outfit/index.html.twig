@@ -8,11 +8,15 @@
     <ul>
     {% for outfit in outfits %}
         <div class="list">
-            <div class="name-surname">Outfit: {{outfit.type}} Master name: {{outfit.master.name}} {{outfit.master.surname}}</div>
-            <a href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit</a>
-            <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
-            <button type="submit">DELETE</button>
-            </form>
+            <div class="name-prop">{{outfit.type}} <span class="name-prop1">Master: {{outfit.master.name}} {{outfit.master.surname}}</span></div>
+            <div class="delete-btn">
+                <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
+                <button class="delete" type="submit">DELETE</button>
+                </form>
+            </div>
+            <div class="edit-btn">
+                <a class="edit" href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit outfit</a>
+            </div>
         </div>
     {% endfor %}
     </ul>
