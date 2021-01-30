@@ -154,7 +154,7 @@ body {
         .name-surname {
             display: inline-block;
             float: left;
-            width: 40%;
+            width: 25%;
         }
         .edit, .add, .delete  {
             text-decoration: none;
@@ -173,19 +173,24 @@ body {
             text-transform: uppercase;
             outline: #1F1F1F;
         }
+        .count {
+            display: inline-block;
+            float: left;
+            width: 13%;
+        }
         .add {
             border: 2px solid #E5E5E5;
             padding: 5px 10px;
         }
         .delete-btn, .edit-btn {
             display: inline-block;
-            float:left;
-            width:30%;
+            float:right;
+            width:20%;
         }
         .add-btn{
             display: inline-block;
             float:left;
-            width:27%;
+            width:20%;
             padding-top: 24px;
         }
         .create-name, .create-surname {

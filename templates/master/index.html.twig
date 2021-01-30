@@ -10,17 +10,19 @@
     <ul>
     {% for master in masters %}
         <div class="list">
-            <div class="name-surname">Master name: {{master.name}} {{master.surname}}</div>
+            <div class="name-surname">{{master.name}} {{master.surname}}</div>
+            {% for outfit in master.outfits %}
+                <div class="count">{{outfit.type}}</div>
+            {% endfor %}
+            <div class="delete-btn">
+                <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
+                <button class="delete" type="submit">DELETE</button>
+                </form>
+            </div>
             <div class="edit-btn">
                 <a class="edit" href="{{ path('master_edit', {id: master.id}) }}">Edit master</a>
             </div>
-            <form class="delete-btn" action="{{ path('master_delete', {id: master.id}) }}" method="POST">
-            <button class="delete" type="submit">DELETE</button>
-            </form>
         </div>
-            Master outfits: {% for outfit in master.outfits %}
-                {{outfit.type}}<br>
-            {% endfor %}
     {% endfor %}
     </ul>
 </div>
