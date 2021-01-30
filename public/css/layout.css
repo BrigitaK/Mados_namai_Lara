@@ -51,7 +51,7 @@ body {
     .container .menu {
         width: 180px;
         float:left;
-        padding-top: 20px;
+        padding-top: 70px;
         background-color: #353b5d;
         color: #fff;
         border-bottom-left-radius: 20px;
@@ -125,12 +125,12 @@ body {
         border-left: 1px solid #E5E5E5;
         border-bottom-right-radius: 20px;
         border-top-right-radius: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 70px;
     }
         .title {
             text-align: center;
             font-weight: 400;
-            margin: 20px 0 30px;
+            margin: 70px 0 30px;
             position: relative;
         }
         .title::after {
@@ -257,6 +257,18 @@ body {
             outline: none;
             margin-top: 25px;
             width: 25%;
+        }
+        .fas {
+            display: inline-block;
+                    color: #000;
+                    text-decoration: none;
+                    border: 0.5px solid #fff;
+                    height: 25px;
+                    width: 25px;
+                    font-size: 15px;
+                    line-height: 25px;
+                    text-align: center;
+                    border-radius: 50%;
         }
         
 
