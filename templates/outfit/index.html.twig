@@ -3,17 +3,17 @@
 {% block title %}Outfits List!{% endblock %}
 
 {% block body %}
-    <h1 class="title">Outfits in Library/h1>
-    List:
+    <h1 class="title">Outfits in Library</h1>
+    <div class="title2">Outfits list:</div>
     <ul>
     {% for outfit in outfits %}
-        <li>
-        {{outfit.type}} {{outfit.master.name}} {{outfit.master.surname}}
-        <a href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit</a>
-        <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
-        <button type="submit">DELETE</button>
-        </form>
-        </li>
+        <div class="list">
+            <div class="name-surname">Outfit: {{outfit.type}} Master name: {{outfit.master.name}} {{outfit.master.surname}}</div>
+            <a href="{{ path('outfit_edit', {id: outfit.id}) }}">Edit</a>
+            <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
+            <button type="submit">DELETE</button>
+            </form>
+        </div>
     {% endfor %}
     </ul>
 {% endblock %}

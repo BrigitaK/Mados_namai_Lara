@@ -6,19 +6,21 @@
 
     <h1 class="title">Masters in Library</h1>
 
-    <div class="title2">List:</div>
+    <div class="title2">Masters list:</div>
     <ul>
     {% for master in masters %}
-        <li>
-        {{master.name}} {{master.surname}}
-        <a href="{{ path('master_edit', {id: master.id}) }}">Edit</a>
-        <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
-        <button type="submit">DELETE</button>
-        </form>
-            {% for outfit in master.outfits %}
+        <div class="list">
+            <div class="name-surname">Master name: {{master.name}} {{master.surname}}</div>
+            <div class="edit-btn">
+                <a class="edit" href="{{ path('master_edit', {id: master.id}) }}">Edit master</a>
+            </div>
+            <form class="delete-btn" action="{{ path('master_delete', {id: master.id}) }}" method="POST">
+            <button class="delete" type="submit">DELETE</button>
+            </form>
+        </div>
+            Master outfits: {% for outfit in master.outfits %}
                 {{outfit.type}}<br>
             {% endfor %}
-        </li>
     {% endfor %}
     </ul>
 </div>

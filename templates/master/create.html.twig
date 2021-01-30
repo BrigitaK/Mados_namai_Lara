@@ -3,13 +3,16 @@
 {% block title %}Create new Master!{% endblock %}
 
 {% block body %}
-    <h1>Create new Master! ✅</h1>
-
-    <form action="{{path('master_store')}}" method="POST">
-        Name:<input type="text" name="master_name">
-        Surname:<input type="text" name="master_surname">
-        <button type="submit">Add new Master</button>
-    </form>
+    <h1 class="title">Create new Master!</h1>
+    <div class="list">
+        <form action="{{path('master_store')}}" method="POST">
+            <div class="create-name">Name: <input class="input" type="text" name="master_name"></div>
+            <div class="create-surname">Surname: <input class="input" type="text" name="master_surname"></div>
+            <div class="add-btn">
+                <button class="add" type="submit">Add new Master</button>
+            </div>
+        </form>
+    <div>
 
 </div>
 {% endblock %}
