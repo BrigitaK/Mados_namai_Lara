@@ -14,14 +14,38 @@ class OutfitController extends AbstractController
     /**
      * @Route("/outfit", name="outfit_index")
      */
-    public function index(): Response
+    public function index(Request $r): Response
     {
-        $outfits = $this->getDoctrine()
-        ->getRepository(Outfit::class)
+        // $outfits = $this->getDoctrine()
+        // ->getRepository(Outfit::class)
+        // ->findAll();
+        $masters = $this->getDoctrine()
+        ->getRepository(Master::class)
         ->findAll();
+
+        $outfits = $this->getDoctrine()
+        ->getRepository(Outfit::class);
+        if(null !== $r->query->get('sort')){
+            $outfits = $outfits->findBy(['type' => $r->query->get('type')]);
+        }
+        else {
+            $outfits = $outfits->findAll();
+        };
+        $outfits = $this->getDoctrine()
+        ->getRepository(Outfit::class);
+        if(null !== $r->query->get('sort')){
+            $outfits = $outfits->findBy(['color' => $r->query->get('color')]);
+        }
+        else {
+            $outfits = $outfits->findAll();
+        }
         
         return $this->render('outfit/index.html.twig', [
             'outfits' => $outfits,
+            'masters' => $masters,
+            'outfitType' => $r->query->get('outfit_type') ?? 0,
+            'outfitColor' => $r->query->get('outfit_color') ?? 0,
+            'sortBy' => $r->query->get('sort') ?? 'default'
         ]);
     }
     /**

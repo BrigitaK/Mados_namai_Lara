@@ -4,7 +4,30 @@
 
 {% block body %}
     <h1 class="title">Outfits in Library</h1>
-    <div class="title2">Outfits list:</div>
+
+    <div class="sort">
+        <div class="title2 title-filter">List filter by:</div>
+        <form action="{{ path('outfit_index')}}" method="GET">
+            <select class="select-filter" name="sort">
+            <option value="default">View All</option>
+                {% for outfit in outfits %}
+                <option value="{{outfit.type}}" {% if outfitType == outfit.type %} selected {% endif %}>{{outfit.type}}</option>
+                {% endfor %}
+            </select>
+            <select class="select-filter" name="sort">
+            <option value="default">View All</option>
+                {% for outfit in outfits %}
+                <option value="{{outfit.color}}" {% if outfitColor == outfit.color %} selected {% endif %}>{{outfit.color}}</option>
+                {% endfor %}
+            </select>
+            <div class="sort-btn">
+                <button class="edit" type="submit">Filter it!</button>
+            </div>
+        </form>
+        <div class="clear-btn">
+            <a class="delete" href="{{ path('outfit_index')}}">clear</a>
+        </div>
+    </div>
     <ul>
     {% for outfit in outfits %}
         <div class="list">
