@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Master;
 
 class MasterController extends AbstractController
@@ -36,21 +37,32 @@ class MasterController extends AbstractController
     /**
      * @Route("/master/create", name="master_create", methods={"GET"})
      */
-    public function create(): Response
+    public function create(Request $r): Response
     {
         return $this->render('master/create.html.twig', [
+            'errors' => $r->getSession()->getFlashBag()->get('errors', [])
         ]);
     }
      /**
      * @Route("/master/store", name="master_store", methods={"POST"})
      */
-    public function store(Request $r): Response
+    public function store(Request $r, ValidatorInterface $validator): Response
     {
         $master= New Master;
         $master->
         setName($r->request->get('master_name'))->
         setSurname($r->request->get('master_surname'));
 
+        $errors = $validator->validate($master);
+
+
+        if (count($errors) > 0) {
+
+            foreach($errors as $error) {
+                $r->getSession()->getFlashBag()->add('errors', $error->getMessage());
+            }
+            return $this->redirectToRoute('master_create');
+        }
        
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($master);
