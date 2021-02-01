@@ -13,14 +13,24 @@ class MasterController extends AbstractController
     /**
      * @Route("/master", name="master_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(Request $r): Response
     {
+        // $masters = $this->getDoctrine()
+        // ->getRepository(Master::class)
+        // ->findAll();
+
         $masters = $this->getDoctrine()
-        ->getRepository(Master::class)
-        ->findAll();
+        ->getRepository(Master::class);
+        if('name_az' == $r->query->get('sort')) {
+            $masters = $masters->findBy([],['name' => 'asc']);
+        }
+        else {
+            $masters = $masters->findAll();
+        }
         
         return $this->render('master/index.html.twig', [
             'masters' => $masters,
+            'sortBy' => $r->query->get('sort') ?? 'default'
         ]);
     }
     /**

@@ -236,6 +236,18 @@ body {
             width:27%;
             padding-top: 24px;
         }
+        .clear-btn {
+            display: inline-block;
+            float:left;
+            width:20%;
+            margin-top: 5px;
+        }
+        .sort-btn {
+            display: inline-block;
+            float:left;
+            margin-left: 20px;
+            width:20%;
+        }
         .create-name, .create-surname {
             display: inline-block;
             float: left;
@@ -261,6 +273,15 @@ body {
             margin-top: 25px;
             width: 25%;
         }
+        .select-sort {
+            display: inline-block;
+            float: left;
+            height: 29px;
+            border: 2px solid #E5E5E5;
+            border-radius: 5px;
+            outline: none;
+            width: 25%;
+        }
         .fas {
             display: inline-block;
                     color: #000;
@@ -272,6 +293,16 @@ body {
                     line-height: 25px;
                     text-align: center;
                     border-radius: 50%;
+        }
+        .sort {
+            display: inline-block;
+            float: left;
+            width: 100%;
+        }
+        .title-sort {
+            display: inline-block;
+            float: left;
+            width: 30%;
         }
         
 

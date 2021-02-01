@@ -6,7 +6,24 @@
 
     <h1 class="title">Masters in Library</h1>
 
-    <div class="title2">Masters list:</div>
+    <div class="sort">
+        <div class="title2 title-sort">Masters list order by:</div>
+            <form action="{{ path('master_index')}}" method="GET">
+                <select class="select-sort" name="sort">
+                    <option value="default">default</option>
+                    <option value="name_az" {% if sortBy == 'name_az' %} selected {% endif %}>name</option>
+                    <option value="name_za" {% if sortBy == 'name_za' %} selected {% endif %}>name reverse</option>
+                    <option value="surname_az" {% if sortBy == 'surname_az' %} selected {% endif %}>surname</option>
+                    <option value="surname_za" {% if sortBy == 'surname_za' %} selected {% endif %}>surname reverse</option>
+                </select>
+                <div class="sort-btn">
+                    <button class="edit" type="submit">Sort it!</button>
+                </div>
+            </form>
+            <div class="clear-btn">
+                <a class="delete" action="{{ path('master_index')}}">clear</a>
+            </div>
+    </div>
     <ul>
     {% for master in masters %}
         <div class="list">
