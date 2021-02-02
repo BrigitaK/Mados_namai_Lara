@@ -6,11 +6,13 @@
     <h1 class="title">Create new Master!</h1>
     <div class="list">
         <form action="{{path('master_store')}}" method="POST">
-            <div class="create-name">Name: <input class="input" type="text" name="master_name"></div>
-            <div class="create-surname">Surname: <input class="input" type="text" name="master_surname"></div>
+            <div class="create-name">Name: <input class="input" type="text" name="master_name" value="{{ master_name }}"></div>
+            <div class="create-surname">Surname: <input class="input" type="text" name="master_surname" value="{{ master_surname }}"></div>
             <div class="add-btn">
                 <button class="add" type="submit">Add new Master</button>
             </div>
+        
+        <input type="hidden" name="token" value="{{ csrf_token('') }}"/>
         </form>
     <div>
 {% endblock %}

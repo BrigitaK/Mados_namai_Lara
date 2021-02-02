@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OutfitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OutfitRepository::class)
@@ -19,21 +20,31 @@ class Outfit
 
     /**
      * @ORM\Column(type="string", length=50)
+    * @Assert\NotBlank(message="Title should not be blank.")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Title must be at least {{ limit }} characters long.",
+     *      maxMessage = "Title cannot be longer than {{ limit }} characters."
+     * )
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="color should not be blank.")
      */
     private $color;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Assert\NotBlank(message="size should not be blank.")
      */
     private $size;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="about should not be blank.")
      */
     private $about;
 

@@ -19,6 +19,7 @@
                 <div class="sort-btn">
                     <button class="edit" type="submit">Sort it!</button>
                 </div>
+            <input type="hidden" name="token" value="{{ csrf_token('') }}"/>
             </form>
             <div class="clear-btn">
                 <a class="delete" action="{{ path('master_index')}}">clear</a>
