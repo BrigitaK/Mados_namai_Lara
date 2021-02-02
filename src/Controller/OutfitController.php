@@ -16,6 +16,8 @@ class OutfitController extends AbstractController
      */
     public function index(Request $r): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         // $outfits = $this->getDoctrine()
         // ->getRepository(Outfit::class)
         // ->findAll();
@@ -47,6 +49,8 @@ class OutfitController extends AbstractController
      */
     public function create(): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        
         $masters = $this->getDoctrine()
         ->getRepository(Master::class)
         ->findBy([],['name' => 'asc', 'surname' => 'asc']);

@@ -16,6 +16,8 @@ class MasterController extends AbstractController
      */
     public function index(Request $r): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         // $masters = $this->getDoctrine()
         // ->getRepository(Master::class)
         // ->findAll();
@@ -40,6 +42,8 @@ class MasterController extends AbstractController
      */
     public function create(Request $r): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        
         $master_name = $r->getSession()->getFlashBag()->get('master_name', []);
         $master_surname = $r->getSession()->getFlashBag()->get('master_surname', []);
 

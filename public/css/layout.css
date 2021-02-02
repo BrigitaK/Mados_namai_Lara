@@ -318,6 +318,26 @@ body {
             float: left;
             width: 17%;
         }
+        .log-top {
+            display: inline-block;
+            width: 100%;
+        }
+        .logged {
+            display: inline-block;
+            float: left;
+            margin-top: 30px;
+            font-size: 20px;
+            line-height: 25px;
+            margin-bottom: 10px;
+            width: 50%;
+        }
+        .logout {
+            display: inline-block;
+            float: left;
+            width: 20%;
+            margin-top: 30px;
+        }
+
         
 
 
