@@ -21,30 +21,24 @@ class OutfitController extends AbstractController
         // ->findAll();
         $masters = $this->getDoctrine()
         ->getRepository(Master::class)
-        ->findAll();
+        ->findBy([],['name' => 'asc', 'surname' => 'asc']);
 
         $outfits = $this->getDoctrine()
         ->getRepository(Outfit::class);
-        if(null !== $r->query->get('sort')){
+        if(null !== $r->query->get('type')){
             $outfits = $outfits->findBy(['type' => $r->query->get('type')]);
+        }
+        elseif ($r->query->get('type') == 0) {
+            $outfits = $outfits->findAll(); 
         }
         else {
             $outfits = $outfits->findAll();
         };
-        $outfits = $this->getDoctrine()
-        ->getRepository(Outfit::class);
-        if(null !== $r->query->get('sort')){
-            $outfits = $outfits->findBy(['color' => $r->query->get('color')]);
-        }
-        else {
-            $outfits = $outfits->findAll();
-        }
         
         return $this->render('outfit/index.html.twig', [
             'outfits' => $outfits,
             'masters' => $masters,
-            'outfitType' => $r->query->get('outfit_type') ?? 0,
-            'outfitColor' => $r->query->get('outfit_color') ?? 0,
+            'outfitType' => $r->query->get('type') ?? 'default',
             'sortBy' => $r->query->get('sort') ?? 'default'
         ]);
     }
@@ -55,7 +49,7 @@ class OutfitController extends AbstractController
     {
         $masters = $this->getDoctrine()
         ->getRepository(Master::class)
-        ->findAll();
+        ->findBy([],['name' => 'asc', 'surname' => 'asc']);
 
         return $this->render('outfit/create.html.twig', [
             'masters' => $masters,

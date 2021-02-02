@@ -8,16 +8,10 @@
     <div class="sort">
         <div class="title2 title-filter">List filter by:</div>
         <form action="{{ path('outfit_index')}}" method="GET">
-            <select class="select-filter" name="sort">
+            <select class="select-filter" name="type">
             <option value="default">View All</option>
                 {% for outfit in outfits %}
                 <option value="{{outfit.type}}" {% if outfitType == outfit.type %} selected {% endif %}>{{outfit.type}}</option>
-                {% endfor %}
-            </select>
-            <select class="select-filter" name="sort">
-            <option value="default">View All</option>
-                {% for outfit in outfits %}
-                <option value="{{outfit.color}}" {% if outfitColor == outfit.color %} selected {% endif %}>{{outfit.color}}</option>
                 {% endfor %}
             </select>
             <div class="sort-btn">

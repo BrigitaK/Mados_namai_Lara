@@ -23,7 +23,7 @@ class MasterController extends AbstractController
         $masters = $this->getDoctrine()
         ->getRepository(Master::class);
         if('name_az' == $r->query->get('sort')) {
-            $masters = $masters->findBy([],['name' => 'asc']);
+            $masters = $masters->findBy([],['name' => 'asc', 'surname' => 'asc']);
         }
         else {
             $masters = $masters->findAll();
