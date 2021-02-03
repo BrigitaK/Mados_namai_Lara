@@ -38,7 +38,7 @@ class Outfit
 
     /**
      * @ORM\Column(type="smallint")
-     * @Assert\NotBlank(message="size should not be blank.")
+     * @Assert\Positive(message="size should not be blank.")
      */
     private $size;
 
