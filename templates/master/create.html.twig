@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1 class="title">Create new Master!</h1>
-    <div class="list">
+    <div class="list-p">
         <form action="{{path('master_store')}}" method="POST">
             <div class="create-name">Name: <input class="input" type="text" name="master_name" value="{{ master_name }}" required="" oninvalid="this.setCustomValidity('Name cannot be blank')"></div>
             <div class="create-surname">Surname: <input class="input" type="text" name="master_surname" value="{{ master_surname }}" ></div>

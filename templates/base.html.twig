@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title> 
         <link href="http://localhost:8888/dashboard/sunkvezimiu_garazas/public/build/app.css" rel="stylesheet"/>
 
+        <link href="{{ asset('css/layout.css') }}" rel="stylesheet"/>
 
 
         <script src="http://localhost:8888/dashboard/sunkvezimiu_garazas/public/build/app.js" defer></script>
@@ -30,16 +31,16 @@
     <div class="block">
         <div class="circle"></div>
         <div class="circle2"></div>
-        <div class="container"> 
+        <div class="container-block"> 
             <div class="menu">
                 <a class="logo" href="#"><span class="name">Lara</span></a>
                 <a class="logo" href="#"><span class="name2">Mados namai</span></a>
                 <nav>
-                <a href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/master">Masters</a>
-                <a href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/master/create">Add master</a>
-                <a href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/outfit">Outfits</a>
-                <a href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/outfit/create">Add outfit</a>
-                <a class="loggout" href="{{ path('app_logout') }}">Atsijungti</a>
+                <a class="nav-a" href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/master">Masters</a>
+                <a class="nav-a" href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/master/create">Add master</a>
+                <a class="nav-a" href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/outfit">Outfits</a>
+                <a class="nav-a" href="http://localhost:8888/dashboard/mados_namai_lara/public/index.php/outfit/create">Add outfit</a>
+                <a class="loggout nav-a" href="{{ path('app_logout') }}">Atsijungti</a>
                 </nav>
             </div>
             <div class="container1">

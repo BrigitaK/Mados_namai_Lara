@@ -25,9 +25,8 @@
                 <a class="delete" action="{{ path('master_index')}}">clear</a>
             </div>
     </div>
-    <ul>
     {% for master in masters %}
-        <div class="list">
+        <div class="list-p">
             <div class="name-surname">{{master.name}} {{master.surname}}</div>
             {% for outfit in master.outfits %}
                 <div class="count">{{outfit.type}}</div>
@@ -42,5 +41,4 @@
             </div>
         </div>
     {% endfor %}
-    </ul>
 {% endblock %}

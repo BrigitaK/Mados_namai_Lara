@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1 class="title">Edit Master!</h1>
-    <div class="list">
+    <div class="list-p">
     <form action="{{path('master_update', {id: master.id})}}" method="POST">
             <div class="create-name">Name: <input class="input" type="text" name="master_name" value="{{master.name}}"></div>
             <div class="create-surname">Surname: <input class="input" type="text" name="master_surname" value="{{master.surname}}"></div>

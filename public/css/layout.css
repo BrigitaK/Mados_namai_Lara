@@ -1,4 +1,4 @@
-body {
+ body {
     background-color:#9598f7;
     width: 100%;
     position: relative;
@@ -38,7 +38,7 @@ body {
     position: relative;
     background-color: #353b5d;
 }
-.container {
+.container-block {
     display: block;
     float: left;
     background-color: #353b5d;
@@ -48,7 +48,7 @@ body {
     border-radius: 20px;
     position: absolute;
 }
-    .container .menu {
+    .container-block .menu {
         width: 180px;
         float:left;
         padding-top: 70px;
@@ -57,7 +57,7 @@ body {
         border-bottom-left-radius: 20px;
         border-top-left-radius: 20px;
     }
-    .container .menu .logo {
+    .container-block .menu .logo {
         display: inline-block;
         width: 180px;
         text-align: center;
@@ -67,12 +67,12 @@ body {
         font-size: 23px;
         line-height: 30px;
     }
-    .container .menu .logo .name {
+    .container-block .menu .logo .name {
         font-size: 66px;
         font-family: 'Brush Script MT';
 
     }
-    .container .menu .logo .name2 {
+    .container-block .menu .logo .name2 {
         font-family: 'Brush Script MT';
         font-size: 26px;
 
@@ -83,13 +83,13 @@ body {
         margin-left: 10px;
         margin-top: 30px;
     }
-    nav a:first-child {
+    nav .nav-a:first-child {
         margin-top: 30px;
     }
-    nav a:last-child {
+    nav .nav-a:last-child {
         margin-bottom: 30px;
     }
-    nav a {
+    nav .nav-a {
         display: inline-block;
         float: left;
         margin-left: 30px;
@@ -103,7 +103,7 @@ body {
         margin-top: 5px;
         padding: 5px 0;
     }
-    nav > a::after {
+    nav > .nav-a::after {
         display: inline-block;
         content: '';
         height: 1px;
@@ -114,14 +114,14 @@ body {
         right: 50%;
         transition: all 0.2s;
     }
-    nav > a:hover::after {
+    nav > .nav-a:hover::after {
         left: 0;
         right: 0;
     }
     .container1 {
         width:calc(100% - 180px);
         float: left;
-        min-height: 340px;
+        min-height: 410px;
         background-color: #fff;
         padding-left: 20px;
         padding-right: 20px;
@@ -151,14 +151,14 @@ body {
             margin-bottom: 10px;
             font-size: 18px;
         }
-        .list {
+        .list-p {
             display: inline-block;
             float: left;
             width: 100%;
             border-bottom: 1px solid #353b5d;
             margin-top: 10px;
         }
-        .list:last-child {
+        .list-p:last-child {
             border: none;
         }
         .name-surname {
@@ -180,7 +180,7 @@ body {
             text-decoration: none;
             border: 1px solid #E5E5E5;
             border-radius: 10px;
-            padding: 3px 10px;
+            padding: 5px 10px;
             text-transform: uppercase;
             font-size: 15px;
             background-color: #b2b2b2;
@@ -202,12 +202,14 @@ body {
             color: #3C3A3A;
             text-transform: uppercase;
             outline: #1F1F1F;
+            text-decoration: none;
         }
         .delete:hover{
             background-color:  #ff9797;
             color: #000;
             text-transform: uppercase;
             outline: #1F1F1F;
+            text-decoration: none;
         }
         .count {
             display: inline-block;
@@ -222,18 +224,16 @@ body {
         .delete-btn{
             display: inline-block;
             float:right;
-            width:20%;
+            margin-left: 10px;
         }
         .edit-btn {
             display: inline-block;
             float:right;
-            width:20%;
             margin-top: 5px;
         }
         .add-btn{
             display: inline-block;
             float:left;
-            width:27%;
             padding-top: 24px;
         }
         .clear-btn {
@@ -380,4 +380,4 @@ body {
         width: 460px;
         margin-left: calc(50% - 230px);
     }
-}  */
+}  */ 

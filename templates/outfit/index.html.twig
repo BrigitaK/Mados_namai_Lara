@@ -22,9 +22,8 @@
             <a class="delete" href="{{ path('outfit_index')}}">clear</a>
         </div>
     </div>
-    <ul>
     {% for outfit in outfits %}
-        <div class="list">
+        <div class="list-p">
             <div class="name-prop">{{outfit.type}} <span class="name-prop1">Master: {{outfit.master.name}} {{outfit.master.surname}}</span></div>
             <div class="delete-btn">
                 <form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
@@ -36,5 +35,4 @@
             </div>
         </div>
     {% endfor %}
-    </ul>
 {% endblock %}
