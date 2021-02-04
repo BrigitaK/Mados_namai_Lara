@@ -2,3 +2,21 @@
 body {
     background-color: lightgray;
 }
+.form-check-input {
+    margin-left: 15px !important;
+}
+
+.form-check.custom {
+    padding-left: 0;
+}
+form.sort-form {
+    display: flex;
+    align-content: center;
+    button {
+        height: 38px;
+        margin: 0 10px;
+    }
+}
+label {
+    display: none !important;
+}

@@ -28,9 +28,12 @@
     {% for master in masters %}
         <div class="list-p">
             <div class="name-surname">{{master.name}} {{master.surname}}</div>
+            <select class="select-sort" name="sort">
+                    <option value="default">Master outfits</option>
             {% for outfit in master.outfits %}
-                <div class="count">{{outfit.type}}</div>
+                <option value="name_az" {% if sortBy == 'name_az' %} selected {% endif %}>{{outfit.type}}</option>
             {% endfor %}
+            </select>
             <div class="delete-btn">
                 <form action="{{ path('master_delete', {id: master.id}) }}" method="POST">
                 <button class="delete" type="submit">DELETE</button>

@@ -1,6 +1,38 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title> 
+        <link href="http://localhost:8888/dashboard/sunkvezimiu_garazas/public/build/app.css" rel="stylesheet"/>
 
-{% block title %}Log in!{% endblock %}
+        <link href="{{ asset('css/layout.css') }}" rel="stylesheet"/>
+
+
+        <script src="http://localhost:8888/dashboard/sunkvezimiu_garazas/public/build/app.js" defer></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+
+
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+        {% block stylesheets %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+    {% if errors is defined and errors|length > 0 %}
+    {% include 'msg/validation.html.twig' %}
+    {% endif %}
+    {% if success is defined and success|length > 0 %}
+    {% include 'msg/success.html.twig' %}
+    {% endif %}
+    <div class="block-login">
+        <div class="circle"></div>
+        <div class="circle2"></div>
+        <div class="container-block-login"> 
+            <div class="container1-login">
 
 {% block body %}
 <form method="post">
@@ -18,18 +50,24 @@
         
     {% endif %}
 
-    <h1 class="title h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="title-login h3 mb-3">Please sign in</h1>
     <div class="list">
-        <label class="create-name" for="inputEmail">Email
-        <input class="input" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus></label>
-        <label class="create-name" for="Password">Password
-        <input class="input" type="password" name="password" id="inputPassword" class="form-control" required></label>
+        <label class="create-input-login" for="inputEmail">
+        <input class="input input-align" placeholder="Email address" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus></label>
+        <label class="create-input-login" for="Password">
+        <input class="input input-align" placeholder="Password" type="password" name="password" id="inputPassword" class="form-control" required></label>
 
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}">
-        <div class="add-btn">
-            <button class="add btn btn-lg btn-primary" type="submit">Sign in</button>
+        <div class="btn-align">
+            <button class="sign btn btn-lg btn-primary" type="submit">Sign in</button>
         </div>
     </div>
 </form>
 {% endblock %}
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
