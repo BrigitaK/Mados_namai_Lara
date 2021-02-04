@@ -9,7 +9,7 @@
             <div class="create-name">Type:<input class="input" type="text" name="outfit_type" value="{{outfit.type}}"></div>
             <div class="create-name">Color:<input class="input" type="text" name="outfit_color" value="{{outfit.color}}"></div>
             <div class="create-name">Size:<input class="input" type="text" name="outfit_size" value="{{outfit.size}}"></div>
-            <div class="create-name">About:<textarea class="input" name="outfit_about">{{outfit.about}}</textarea></div>
+            <div class="create-name">About:<textarea class="input" name="outfit_about" id="summernote">{{outfit.about}}</textarea></div>
             <select class="select" name="outfit_master_id">
             {% for master in masters %}
             <option value="{{master.id}}" {% if master.id == outfit.masterId %} selected {% endif %}>

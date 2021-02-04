@@ -9,7 +9,7 @@
             <div class="create-name">Type:<input class="input" type="text" name="outfit_type"></div>
             <div class="create-name">Color:<input class="input" type="text" name="outfit_color"></div>
             <div class="create-name">Size:<input class="input" type="text" name="outfit_size"></div>
-            <div class="create-name">About:<textarea class="input" name="outfit_about"></textarea></div>
+            <div class="create-name">About:<textarea class="input" name="outfit_about" id="summernote"></textarea></div>
             <select class="select" name="outfit_master_id">
             {% for master in masters %}
             <option  value="{{master.id}}">{{master.name}} {{master.surname}}</option>
