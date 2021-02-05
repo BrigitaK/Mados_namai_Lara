@@ -7,7 +7,6 @@
 
         <link href="{{ asset('css/layout.css') }}" rel="stylesheet"/>
 
-
         <script src="http://localhost:8888/dashboard/mados_namai_lara/public/build/app.js" defer></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
@@ -43,13 +42,12 @@
 					<div class="card-body">
 						{{ form_start(registrationForm, { 'attr': {'class': 'create-input-login'} }) }}
 						<div class="form-group">
-							{{ form_row(registrationForm.email, { attr: {'class': 'input input-align'} }) }}
+							{{ form_row(registrationForm.email, { attr: {'class': 'input input-align', placeholder: 'Email address'} }) }}
 
 						</div>
 						<div class="form-group">
 							{{ form_row(registrationForm.plainPassword, {
-            label: 'Password',
-            attr: {'class': 'input input-align'}
+            attr: {'class': 'input input-align', placeholder: 'Password'}
         }) }}
 						</div>
 <div class="create-agree">
